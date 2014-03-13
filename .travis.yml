@@ -1,0 +1,36 @@
+before_install:
+ - export NUM_CPU="`grep processor /proc/cpuinfo | wc -l`"; echo $NUM_CPU
+ - sudo apt-get install -qq libatlas-base-dev libeigen3-dev
+
+install: "
+cd ..
+
+# install gflags
+curl https://gflags.googlecode.com/files/gflags-2.0-no-svn-files.tar.gz | tar xvz
+cd gflags-2.0
+./configure --prefix=/usr/local
+make -j3
+sudo make install
+
+# install glog
+curl https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz | tar xvz
+cd glog-0.3.3
+./configure --with-gflags=/usr/local/
+make -j3
+sudo make install
+
+
+curl https://ceres-solver.googlecode.com/files/ceres-solver-1.8.0.tar.gz | tar xvz
+mkdir ceres-bin
+cd ceres-bin
+cmake ../ceres-solver-1.8.0
+make -j3
+make test
+sudo make install
+
+cd bundler_sfm
+"
+
+script:
+ - make -j
+ - sudo cp bin/libANN_char.so /usr/lib
