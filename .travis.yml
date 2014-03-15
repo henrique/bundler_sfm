@@ -28,7 +28,7 @@ install:
  - mkdir ceres-bin
  - cd ceres-bin
  - cmake ../ceres-solver-1.8.0
- - make -j$NUM_CPU
+ - make -j3
 # - make test
  - sudo make install
  - cd ..
