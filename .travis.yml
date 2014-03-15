@@ -13,6 +13,7 @@ install:
  - ./configure --prefix=/usr/local
  - make -j$NUM_CPU
  - sudo make install
+ - cd ..
 
 # install glog
  - curl https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz | tar xvz
@@ -20,6 +21,7 @@ install:
  - ./configure --with-gflags=/usr/local/
  - make -j$NUM_CPU
  - sudo make install
+ - cd ..
 
 # install ceres
  - curl https://ceres-solver.googlecode.com/files/ceres-solver-1.8.0.tar.gz | tar xvz
@@ -29,6 +31,7 @@ install:
  - make -j$NUM_CPU
  - make test
  - sudo make install
+ - cd ..
 
  - cd bundler_sfm
 
