@@ -2,8 +2,8 @@ language: cpp
 
 before_install:
  - export NUM_CPU="`grep processor /proc/cpuinfo | wc -l`"; echo $NUM_CPU
- - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gcc cmake gfortran libsuitesparse-dev
- - whereis libcholmod
+ - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran libsuitesparse-dev
+ 
 
 install:
  - cd ..
@@ -29,7 +29,7 @@ install:
  - mkdir ceres-bin
  - cd ceres-bin
  - cmake ../ceres-solver-1.8.0
- - make -j3
+ - make -j8
 # - make test
  - sudo make install
  - cd ..
@@ -38,5 +38,5 @@ install:
 
 
 script:
- - make -j3
+ - make -j$NUM_CPU
  - sudo cp bin/libANN_char.so /usr/lib
