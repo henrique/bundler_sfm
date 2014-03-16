@@ -3,6 +3,7 @@ language: cpp
 before_install:
  - export NUM_CPU="`grep processor /proc/cpuinfo | wc -l`"; echo $NUM_CPU
  - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gcc cmake gfortran libcholmod*
+ - whereis libcholmod
 
 install:
  - cd ..
@@ -37,5 +38,5 @@ install:
 
 
 script:
- - make -j$NUM_CPU
+ - make -j3
  - sudo cp bin/libANN_char.so /usr/lib
