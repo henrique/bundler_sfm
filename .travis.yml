@@ -2,7 +2,7 @@ language: cpp
 
 before_install:
  - export NUM_CPU=4
- - sudo apt-get install -qq libatlas-base-dev libeigen3-dev libgflags-dev gfortran
+ - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran
 # libsuitesparse-dev
  - sudo ln -sf /usr/local/include/eigen3/Eigen /usr/local/include/Eigen
  - ls -la /usr/local/include/Eigen
@@ -10,7 +10,15 @@ before_install:
 
 install:
  - cd ..
-
+ 
+# install gflags
+ - curl https://gflags.googlecode.com/files/gflags-2.0-no-svn-files.tar.gz | tar xvz
+ - cd gflags-2.0
+ - ./configure --prefix=/usr/local
+ - make -j$NUM_CPU
+ - sudo make install
+ - cd ..
+ 
 # install glog
  - curl https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz | tar xvz
  - cd glog-0.3.3
