@@ -20,10 +20,10 @@ install:
  - cd ..
 
 # install ceres
- - curl http://ceres-solver.org/ceres-solver-1.10.0.tar.gz | tar xvz
+ - curl http://ceres-solver.org/ceres-solver-1.9.0.tar.gz | tar xvz
  - mkdir ceres-bin && cd ceres-bin
  - dpkg -L libeigen3-dev
- - cmake -D EIGEN_PATH=/usr/include/eigen3/Eigen ../ceres-solver-1.10.0
+ - cmake -D EIGEN_PATH=/usr/include/eigen3/Eigen ../ceres-solver-1.9.0
  - make -j$NUM_CPU
 # - make test
  - sudo make install
