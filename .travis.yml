@@ -6,7 +6,7 @@ before_install:
 # libsuitesparse-dev
 - ls -la /usr/include/eigen3
 - sudo ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
- 
+
 
 install:
  - cd ..
