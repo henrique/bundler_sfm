@@ -2,12 +2,26 @@ language: cpp
 
 before_install:
  - export NUM_CPU=3
- - sudo apt-add-repository "deb http://archive.ubuntu.com/ubuntu/ trusty main restricted" -y
- - sudo apt-get update -qq
- - sudo apt-get install -qq libgoogle-glog-dev libatlas-base-dev libeigen3-dev
+ - sudo apt-get install -qq libatlas-base-dev libeigen3-dev
  
 
 install:
+ - cd ..
+
+# install gflags
+ - curl https://gflags.googlecode.com/files/gflags-2.0-no-svn-files.tar.gz | tar xvz
+ - cd gflags-2.0
+ - ./configure --prefix=/usr/local
+ - make -j$NUM_CPU
+ - sudo make install
+ - cd ..
+
+# install glog
+ - curl https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz | tar xvz
+ - cd glog-0.3.3
+ - ./configure --with-gflags=/usr/local/
+ - make -j$NUM_CPU
+ - sudo make install
  - cd ..
 
 # install ceres
