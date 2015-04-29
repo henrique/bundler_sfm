@@ -28,7 +28,7 @@ install:
  - curl http://ceres-solver.org/ceres-solver-1.10.0.tar.gz | tar xvz
  - mkdir ceres-bin
  - cd ceres-bin
- - cmake ../ceres-solver-1.9.0
+ - cmake ../ceres-solver-1.10.0
  - make -j8
 # - make test
  - sudo make install
