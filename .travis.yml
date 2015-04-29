@@ -1,8 +1,10 @@
 language: cpp
 
 before_install:
- - export NUM_CPU=3
+ - export NUM_CPU=4
  - sudo apt-get install -qq libatlas-base-dev libeigen3-dev
+ - sudo updatedb
+ - locate "Eigen/SparseCore"
  
 
 install:
