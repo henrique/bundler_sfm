@@ -2,8 +2,8 @@ language: cpp
 
 before_install:
  - export NUM_CPU=3
- - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran
-# libsuitesparse-dev
+ - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran  libsuitesparse-dev
+# libgoogle-glog-dev libgflags-dev
  - ls -la /usr/include/eigen3
  - sudo ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
 
