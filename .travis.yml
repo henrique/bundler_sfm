@@ -2,6 +2,8 @@ language: cpp
 
 before_install:
  - export NUM_CPU=3
+ - sudo apt-add-repository "deb http://archive.ubuntu.com/ubuntu/ trusty main restricted" -y
+ - sudo apt-get update -qq
  - sudo apt-get install -qq libgoogle-glog-dev libatlas-base-dev libeigen3-dev
  
 
