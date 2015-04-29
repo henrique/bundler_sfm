@@ -1,7 +1,7 @@
 language: cpp
 
 before_install:
- - export NUM_CPU="`grep processor /proc/cpuinfo | wc -l`"; echo $NUM_CPU
+ - export NUM_CPU=2
  - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran libsuitesparse-dev
  
 
@@ -29,7 +29,7 @@ install:
  - mkdir ceres-bin
  - cd ceres-bin
  - cmake ../ceres-solver-1.10.0
- - make -j8
+ - make -j$NUM_CPU
 # - make test
  - sudo make install
  - cd ..
