@@ -4,7 +4,6 @@ before_install:
  - export NUM_CPU=4
  - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran
 # libsuitesparse-dev
- - dpkg -L libeigen3-dev
  
 
 install:
@@ -30,7 +29,8 @@ install:
  - curl http://ceres-solver.org/ceres-solver-1.10.0.tar.gz | tar xvz
  - mkdir ceres-bin
  - cd ceres-bin
- - cmake -D EIGEN_PATH=/usr/local/include/eigen3 ../ceres-solver-1.10.0
+# - dpkg -L libeigen3-dev
+ - cmake -D EIGEN_PATH=/usr/include/eigen3 ../ceres-solver-1.10.0
  - make -j$NUM_CPU
 # - make test
  - sudo make install
