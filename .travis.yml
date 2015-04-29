@@ -4,8 +4,8 @@ before_install:
  - export NUM_CPU=3
  - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran
 # libsuitesparse-dev
-- ls -la /usr/include/eigen3
-- sudo ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
+ - ls -la /usr/include/eigen3
+ - sudo ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
 
 
 install:
