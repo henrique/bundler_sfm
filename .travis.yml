@@ -5,7 +5,7 @@ before_install:
  - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran
 # libsuitesparse-dev
  - sudo ln -sf /usr/local/include/eigen3/Eigen /usr/local/include/Eigen
- - ls -la /usr/local/include/Eigen
+ - ls -la /usr/local/include/eigen3
  
 
 install:
@@ -31,7 +31,7 @@ install:
  - curl http://ceres-solver.org/ceres-solver-1.10.0.tar.gz | tar xvz
  - mkdir ceres-bin
  - cd ceres-bin
- - cmake ../ceres-solver-1.10.0
+ - cmake -D EIGEN_PATH=/usr/local/include/eigen3 ../ceres-solver-1.10.0
  - make -j$NUM_CPU
 # - make test
  - sudo make install
