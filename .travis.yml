@@ -2,19 +2,26 @@ language: cpp
 
 before_install:
  - export NUM_CPU=3
- - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran libgoogle-glog-dev libsuitesparse-dev
-# libgflags-dev
+ - sudo apt-get install -qq libatlas-base-dev libeigen3-dev gfortran libsuitesparse-dev
+# libgflags-dev  libgoogle-glog-dev
  - ls -la /usr/include/eigen3
  - sudo ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
 
 
 install:
+ - mkdir thirdparty && cd thirdparty
+
+# install glog
+ - curl https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz | tar xvz
+ - cd glog-0.3.3
+ - ./configure --with-gflags=/usr/local/
+ - make -j$NUM_CPU
+ - sudo make install
  - cd ..
 
 # install ceres
  - curl http://ceres-solver.org/ceres-solver-1.10.0.tar.gz | tar xvz
- - mkdir ceres-bin
- - cd ceres-bin
+ - mkdir ceres-bin && cd ceres-bin
  - dpkg -L libeigen3-dev
  - cmake -D EIGEN_PATH=/usr/include/eigen3/Eigen ../ceres-solver-1.10.0
  - make -j$NUM_CPU
@@ -22,7 +29,7 @@ install:
  - sudo make install
  - cd ..
 
- - cd bundler_sfm
+ - cd ..
 
 
 script:
